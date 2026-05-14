@@ -28,6 +28,12 @@ export const EventTicket = () => {
           50% { opacity: 0; }
         }
         .cursor-blink { animation: blink 1s step-end infinite; }
+        .ticket-right-strip { display: flex; }
+        .ticket-stub { width: 90px; flex-shrink: 0; }
+        @media (max-width: 520px) {
+          .ticket-right-strip { display: none !important; }
+          .ticket-stub { width: 56px !important; }
+        }
       `}</style>
 
       {/* Label + title */}
@@ -81,8 +87,7 @@ export const EventTicket = () => {
           }}
         >
           {/* Left stub */}
-          <div style={{
-            width: 90,
+          <div className="ticket-stub" style={{
             flexShrink: 0,
             background: BLUE,
             display: 'flex',
@@ -215,10 +220,9 @@ export const EventTicket = () => {
           </div>
 
           {/* Right decorative strip */}
-          <div style={{
+          <div className="ticket-right-strip" style={{
             width: 72,
             flexShrink: 0,
-            display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',

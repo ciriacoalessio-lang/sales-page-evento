@@ -163,18 +163,18 @@ export const Html = () => {
 
   useEffect(() => {
     if (visibleWords < titleWords.length) {
-      const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 600);
+      const timeout = setTimeout(() => setVisibleWords(visibleWords + 1), 150);
       return () => clearTimeout(timeout);
     } else {
-      const timeout = setTimeout(() => setSubtitleVisible(true), 800);
+      const timeout = setTimeout(() => setSubtitleVisible(true), 300);
       return () => clearTimeout(timeout);
     }
   }, [visibleWords, titleWords.length]);
 
   return (
-    <div className="h-svh" style={{ background: '#0a0a0a' }}>
+    <div className="h-svh relative" style={{ background: '#0a0a0a' }}>
       <div
-        className="h-svh items-center w-full absolute z-60 pointer-events-none px-10 flex justify-center flex-col"
+        className="h-svh items-center w-full absolute inset-0 z-60 pointer-events-none px-10 flex justify-center flex-col"
         style={{ textAlign: 'center' }}
       >
         {/* dark vignette behind text so it reads on the bright blob */}
@@ -216,7 +216,7 @@ export const Html = () => {
                 key={index}
                 className={index < visibleWords ? 'fade-in' : ''}
                 style={{
-                  animationDelay: `${index * 0.13 + (delays[index] || 0)}s`,
+                  animationDelay: `${index * 0.04 + (delays[index] || 0)}s`,
                   opacity: index < visibleWords ? undefined : 0,
                 }}
               >

@@ -97,7 +97,7 @@ const Ticket = ({
   items: string[];
   highlight?: boolean;
 }) => (
-  <GlowCard highlight={highlight} className="flex-1 min-w-[220px]">
+  <GlowCard highlight={highlight} className="flex-1 min-w-[260px] max-w-full">
     {highlight && (
       <p style={{ ...s.label, marginBottom: 12 }}>Più scelto</p>
     )}
@@ -396,7 +396,7 @@ export const SalesPage = () => {
       <div id="acquista" style={s.section}>
         <p style={s.label}>L'offerta</p>
         <h2 style={s.h2}>Scegli il tuo ticket.</h2>
-        <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+        <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
           <Ticket
             name="Alleanza base"
             tagline="Solo workshop"
@@ -438,15 +438,15 @@ export const SalesPage = () => {
         <p style={s.label}>FAQ</p>
         <Faq
           q="Hai bisogno della fattura?"
-          a="Scrivimi entro 3 giorni dall'acquisto e la gestisco."
+          a="Mandami tutti i dati a ciriacoalessio@gmail.com e ti mando la fattura."
         />
         <Faq
           q="Cosa succede se non riesco a venire?"
           a="Il biglietto non è rimborsabile, ma puoi convertirlo in uno sconto su un manuale o una consulenza."
         />
         <Faq
-          q="Cosa succede se disdico io?"
-          a="Se disdico all'ultimo momento ti rimborso il biglietto più una consulenza gratuita."
+          q="Cosa succede se annullo l'evento?"
+          a="Se annullo l'evento sarai rimborsato o potrai avere una consulenza strategica sul tuo problema specifico."
         />
         <Faq
           q="Riceverò i materiali anche se non riesco a venire?"

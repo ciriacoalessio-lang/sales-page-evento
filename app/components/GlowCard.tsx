@@ -18,7 +18,6 @@ const BEFORE_AFTER_STYLES = `
     inset: calc(var(--border-size) * -1);
     border: var(--border-size) solid transparent;
     border-radius: calc(var(--radius) * 1px);
-    background-attachment: fixed;
     background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -101,10 +100,9 @@ export const GlowCard: React.FC<GlowCardProps> = ({ children, className, highlig
           backgroundColor: 'var(--backdrop, transparent)',
           backgroundSize: 'calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)))',
           backgroundPosition: '50% 50%',
-          backgroundAttachment: 'fixed',
           border: 'var(--border-size) solid var(--backup-border)',
           position: 'relative',
-          touchAction: 'none',
+          touchAction: 'pan-y',
         } as React.CSSProperties}
         className={cn(
           'rounded-2xl relative flex flex-col shadow-[0_1rem_2rem_-1rem_black] p-7 backdrop-blur-sm',
