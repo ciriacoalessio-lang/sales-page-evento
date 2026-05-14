@@ -408,7 +408,7 @@ export const SalesPage = () => {
           />
           <Ticket
             name="Alleanza + Manuali"
-            tagline="Workshop + risorse"
+            tagline="Al prezzo di una cena per 2 che non ti farà guadagnare altri soldi. Questo evento invece sì."
             price="50€"
             highlight
             items={[
