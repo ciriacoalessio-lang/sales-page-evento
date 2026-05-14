@@ -122,7 +122,7 @@ export const EventTicket = () => {
               writingMode: 'vertical-rl',
               transform: 'rotate(180deg)',
               letterSpacing: '0.05em',
-            }}>06.06.2025</span>
+            }}>06.06.2026</span>
           </div>
 
           {/* Dashed separator */}
@@ -213,7 +213,7 @@ export const EventTicket = () => {
                   letterSpacing: '0.1em',
                   fontVariantNumeric: 'tabular-nums',
                 }}>
-                  #A-2025-0{Math.floor(Math.random() * 9 + 1)}
+                  #A-2026-0{Math.floor(Math.random() * 9 + 1)}
                 </div>
               </div>
             </div>
