@@ -90,12 +90,14 @@ const Ticket = ({
   price,
   items,
   highlight = false,
+  href = '#acquista',
 }: {
   name: string;
   tagline: string;
   price: string;
   items: string[];
   highlight?: boolean;
+  href?: string;
 }) => (
   <GlowCard highlight={highlight} className="flex-1 min-w-[260px] max-w-full">
     {highlight && (
@@ -123,7 +125,9 @@ const Ticket = ({
       ))}
     </ul>
     <a
-      href="#acquista"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       style={{
         display: 'block',
         marginTop: 28,
@@ -208,7 +212,7 @@ const makeBeams = (cx: number, cy: number) => [
 
 const CtaButton = ({ label, primary = true }: { label: string; primary?: boolean }) => (
   <a
-    href="#acquista"
+    href="https://www.alleanzadeicreator.it/eventobasic-abceca82"
     style={{
       background: primary ? BLUE : 'transparent',
       border: primary ? 'none' : `1px solid rgba(255,255,255,0.25)`,
@@ -401,6 +405,7 @@ export const SalesPage = () => {
             name="Alleanza base"
             tagline="Solo workshop"
             price="30€"
+            href="https://www.alleanzadeicreator.it/eventobasic-1ffb1f72"
             items={[
               'Partecipazione al workshop',
               'Materiali inediti per lavorare sulla tua offerta durante la giornata',
@@ -410,6 +415,7 @@ export const SalesPage = () => {
             name="Alleanza + Manuali"
             tagline="Al prezzo di una cena per 2 che non ti farà guadagnare altri soldi. Questo evento invece sì."
             price="50€"
+            href="https://www.alleanzadeicreator.it/eventobasic-abceca82"
             highlight
             items={[
               'Tutto quello che include Alleanza base',
@@ -420,6 +426,7 @@ export const SalesPage = () => {
           <Ticket
             name="Alleanza Strategica"
             tagline="Workshop + coaching"
+            href="https://www.alleanzadeicreator.it/eventobasic-6d042ebf"
             price="97€"
             items={[
               'Tutto quello che include Alleanza + Manuali',
