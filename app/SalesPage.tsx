@@ -448,31 +448,7 @@ export const SalesPage = () => {
       {/* Testimonials */}
       <Testimonials />
 
-      {/* Cosa porti a casa */}
-      <hr style={s.divider} />
-      <div style={s.section}>
-        <p style={s.label}>Cosa porti a casa</p>
-        <h2 style={s.h2}>Uscirai da qui con qualcosa di concreto.</h2>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          {[
-            { title: 'La tua offerta scritta', desc: 'Nome, promessa, struttura. Pronta da pubblicare.' },
-            { title: 'Il tuo cliente ideale definito', desc: 'Non un\'idea vaga — una persona reale con un problema reale che tu sai risolvere.' },
-            { title: 'Un prezzo che non ti fa vergognare', desc: 'E le parole giuste per difenderlo.' },
-            { title: 'Un piano per vendere', desc: 'I prossimi 3 passi da fare subito dopo il workshop.' },
-            { title: 'Chiarezza', desc: 'Quella cosa che di solito arriva dopo mesi di tentativi. Qui la costruiamo in una giornata.' },
-          ].map(({ title, desc }) => (
-            <li key={title} style={{ display: 'flex', gap: 20, marginBottom: 28, alignItems: 'flex-start' }}>
-              <span style={{ color: BLUE, fontSize: 8, marginTop: 7, flexShrink: 0 }}>●</span>
-              <div>
-                <p style={{ fontFamily: "'Libre Baskerville', Georgia, serif", fontStyle: 'italic', fontSize: '1.1rem', color: WHITE, marginBottom: 4 }}>{title}</p>
-                <p style={{ ...s.body, fontSize: '0.9rem' }}>{desc}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* ROW 6 — L'offerta */}
+{/* ROW 6 — L'offerta */}
       <hr style={s.divider} />
       <div id="acquista" style={s.section}>
         <p style={s.label}>L'offerta</p>
