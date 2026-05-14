@@ -4,6 +4,7 @@ import { PulseBeams } from './components/PulseBeams';
 import { GlowCard } from './components/GlowCard';
 import { Testimonials } from './components/Testimonials';
 import { EventTicket } from './components/EventTicket';
+import { useEffect, useState } from 'react';
 
 const BLUE = '#1f22f2';
 const DARK = '#0a0a0a';
@@ -42,6 +43,54 @@ const s = {
     borderColor: 'rgba(255,255,255,0.08)',
     margin: 0,
   },
+};
+
+/* ── Countdown ───────────────────────────── */
+
+const Countdown = () => {
+  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const target = new Date('2025-06-06T10:00:00');
+    const tick = () => {
+      const diff = target.getTime() - Date.now();
+      if (diff <= 0) return;
+      setTime({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const Unit = ({ n, label }: { n: number; label: string }) => (
+    <div style={{ textAlign: 'center', minWidth: 64 }}>
+      <p style={{
+        fontFamily: "'Libre Baskerville', Georgia, serif",
+        fontSize: 'clamp(2rem, 5vw, 3rem)',
+        color: WHITE,
+        lineHeight: 1,
+        marginBottom: 6,
+      }}>{String(n).padStart(2, '0')}</p>
+      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>{label}</p>
+    </div>
+  );
+
+  return (
+    <div style={{ ...s.section, textAlign: 'center' }}>
+      <p style={s.label}>L'evento inizia tra</p>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(16px, 4vw, 48px)', flexWrap: 'wrap' }}>
+        <Unit n={time.days} label="giorni" />
+        <Unit n={time.hours} label="ore" />
+        <Unit n={time.minutes} label="minuti" />
+        <Unit n={time.seconds} label="secondi" />
+      </div>
+    </div>
+  );
 };
 
 /* ── helpers ─────────────────────────────── */
@@ -259,6 +308,10 @@ export const SalesPage = () => {
   return (
     <div style={{ background: DARK, color: WHITE }}>
 
+      {/* COUNTDOWN */}
+      <hr style={s.divider} />
+      <Countdown />
+
       {/* ROW 1 — I passi */}
       <hr style={s.divider} />
       <div style={s.section}>
@@ -395,6 +448,30 @@ export const SalesPage = () => {
       {/* Testimonials */}
       <Testimonials />
 
+      {/* Cosa porti a casa */}
+      <hr style={s.divider} />
+      <div style={s.section}>
+        <p style={s.label}>Cosa porti a casa</p>
+        <h2 style={s.h2}>Uscirai da qui con qualcosa di concreto.</h2>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {[
+            { title: 'La tua offerta scritta', desc: 'Nome, promessa, struttura. Pronta da pubblicare.' },
+            { title: 'Il tuo cliente ideale definito', desc: 'Non un\'idea vaga — una persona reale con un problema reale che tu sai risolvere.' },
+            { title: 'Un prezzo che non ti fa vergognare', desc: 'E le parole giuste per difenderlo.' },
+            { title: 'Un piano per vendere', desc: 'I prossimi 3 passi da fare subito dopo il workshop.' },
+            { title: 'Chiarezza', desc: 'Quella cosa che di solito arriva dopo mesi di tentativi. Qui la costruiamo in una giornata.' },
+          ].map(({ title, desc }) => (
+            <li key={title} style={{ display: 'flex', gap: 20, marginBottom: 28, alignItems: 'flex-start' }}>
+              <span style={{ color: BLUE, fontSize: 8, marginTop: 7, flexShrink: 0 }}>●</span>
+              <div>
+                <p style={{ fontFamily: "'Libre Baskerville', Georgia, serif", fontStyle: 'italic', fontSize: '1.1rem', color: WHITE, marginBottom: 4 }}>{title}</p>
+                <p style={{ ...s.body, fontSize: '0.9rem' }}>{desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {/* ROW 6 — L'offerta */}
       <hr style={s.divider} />
       <div id="acquista" style={s.section}>
@@ -403,7 +480,7 @@ export const SalesPage = () => {
         <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
           <Ticket
             name="Alleanza base"
-            tagline="Solo workshop"
+            tagline="Meno di una masterclass online — con zero pratica e zero confronto reale."
             price="30€"
             href="https://www.alleanzadeicreator.it/eventobasic-1ffb1f72"
             items={[
@@ -425,7 +502,7 @@ export const SalesPage = () => {
           />
           <Ticket
             name="Alleanza Strategica"
-            tagline="Workshop + coaching"
+            tagline="Questo ticket dovrebbe costare almeno il doppio. Il prezzo che vedi è riservato solo a chi sarà in sala il 6 giugno."
             href="https://www.alleanzadeicreator.it/eventobasic-6d042ebf"
             price="97€"
             items={[
