@@ -212,7 +212,7 @@ const makeBeams = (cx: number, cy: number) => [
 
 const CtaButton = ({ label, primary = true }: { label: string; primary?: boolean }) => (
   <a
-    href="https://www.alleanzadeicreator.it/eventobasic-abceca82"
+    href="#acquista"
     style={{
       background: primary ? BLUE : 'transparent',
       border: primary ? 'none' : `1px solid rgba(255,255,255,0.25)`,
