@@ -44,3 +44,28 @@ body {
 .fade-in-subtitle {
   animation: fadeInSubtitle 0.7s ease forwards;
 }
+
+/* ── Mobile optimizations ─────────────────── */
+@media (max-width: 640px) {
+  /* Ticket cards — full width su mobile */
+  .ticket-grid {
+    flex-direction: column !important;
+  }
+  .ticket-grid > * {
+    min-width: unset !important;
+    width: 100% !important;
+  }
+
+  /* CTA buttons — full width su mobile */
+  .cta-btn-mobile {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 16px 24px !important;
+  }
+
+  /* Riduce spazio stats "Chi sono" */
+  .stats-grid {
+    gap: 32px !important;
+  }
+}

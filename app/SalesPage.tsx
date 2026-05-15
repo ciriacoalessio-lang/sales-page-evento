@@ -14,7 +14,7 @@ const s = {
   section: {
     maxWidth: 760,
     margin: '0 auto',
-    padding: '80px 24px',
+    padding: 'clamp(48px, 8vw, 80px) 24px',
   } as React.CSSProperties,
   label: {
     fontFamily: 'Inter, sans-serif',
@@ -48,13 +48,16 @@ const s = {
 /* ── Countdown ───────────────────────────── */
 
 const Countdown = () => {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [time, setTime] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
 
   useEffect(() => {
     const target = new Date('2026-06-06T10:00:00');
     const tick = () => {
       const diff = target.getTime() - Date.now();
-      if (diff <= 0) return;
+      if (diff <= 0) {
+        setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
       setTime({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff % 86400000) / 3600000),
@@ -67,7 +70,7 @@ const Countdown = () => {
     return () => clearInterval(id);
   }, []);
 
-  const Unit = ({ n, label }: { n: number; label: string }) => (
+  const Unit = ({ n, label }: { n: number | null; label: string }) => (
     <div style={{ textAlign: 'center', minWidth: 64 }}>
       <p style={{
         fontFamily: "'Libre Baskerville', Georgia, serif",
@@ -75,7 +78,7 @@ const Countdown = () => {
         color: WHITE,
         lineHeight: 1,
         marginBottom: 6,
-      }}>{String(n).padStart(2, '0')}</p>
+      }}>{n === null ? '—' : String(n).padStart(2, '0')}</p>
       <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>{label}</p>
     </div>
   );
@@ -84,10 +87,10 @@ const Countdown = () => {
     <div style={{ ...s.section, textAlign: 'center' }}>
       <p style={s.label}>L'evento inizia tra</p>
       <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(16px, 4vw, 48px)', flexWrap: 'wrap' }}>
-        <Unit n={time.days} label="giorni" />
-        <Unit n={time.hours} label="ore" />
-        <Unit n={time.minutes} label="minuti" />
-        <Unit n={time.seconds} label="secondi" />
+        <Unit n={time?.days ?? null} label="giorni" />
+        <Unit n={time?.hours ?? null} label="ore" />
+        <Unit n={time?.minutes ?? null} label="minuti" />
+        <Unit n={time?.seconds ?? null} label="secondi" />
       </div>
     </div>
   );
@@ -281,26 +284,38 @@ const CtaButton = ({ label, primary = true }: { label: string; primary?: boolean
   </a>
 );
 
-const PulseCtaSection = ({ label, caption }: { label: string; caption?: string }) => (
-  <div style={{ background: DARK }}>
-    <hr style={{ borderColor: 'rgba(255,255,255,0.08)', margin: 0 }} />
-    <PulseBeams beams={makeBeams(450, 160)} gradientColors={GRADIENT_COLORS} svgWidth={900} svgHeight={320}>
-      <div style={{ padding: '80px 24px', textAlign: 'center' }}>
-        {caption && (
-          <p style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: 11,
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            color: BLUE,
-            marginBottom: 20,
-          }}>{caption}</p>
-        )}
-        <CtaButton label={label} />
+const PulseCtaSection = ({ label, caption }: { label: string; caption?: string }) => {
+  const inner = (
+    <div style={{ padding: 'clamp(48px, 8vw, 80px) 24px', textAlign: 'center' }}>
+      {caption && (
+        <p style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: 11,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color: BLUE,
+          marginBottom: 20,
+        }}>{caption}</p>
+      )}
+      <CtaButton label={label} />
+    </div>
+  );
+  return (
+    <div style={{ background: DARK }}>
+      <hr style={{ borderColor: 'rgba(255,255,255,0.08)', margin: 0 }} />
+      {/* Desktop: con beams animati */}
+      <div className="hidden sm:block">
+        <PulseBeams beams={makeBeams(450, 160)} gradientColors={GRADIENT_COLORS} svgWidth={900} svgHeight={320}>
+          {inner}
+        </PulseBeams>
       </div>
-    </PulseBeams>
-  </div>
-);
+      {/* Mobile: semplice CTA centrato */}
+      <div className="sm:hidden">
+        {inner}
+      </div>
+    </div>
+  );
+};
 
 /* ── main component ──────────────────────── */
 
@@ -416,7 +431,7 @@ export const SalesPage = () => {
           In poche parole: se fai fatica a vendere il tuo servizio, lavoriamo sul tuo processo di vendita,
           capiamo dove stai sbagliando e aggiustiamo il tiro.
         </p>
-        <div style={{ display: 'flex', gap: 48, flexWrap: 'wrap' }}>
+        <div className="stats-grid" style={{ display: 'flex', gap: 48, flexWrap: 'wrap' }}>
           {[
             { n: '4', label: 'eventi di formazione organizzati' },
             { n: '3', label: 'anni a costruire business con i professionisti' },
@@ -453,7 +468,7 @@ export const SalesPage = () => {
       <div id="acquista" style={s.section}>
         <p style={s.label}>L'offerta</p>
         <h2 style={s.h2}>Scegli il tuo ticket.</h2>
-        <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
+        <div className="ticket-grid" style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
           <Ticket
             name="Alleanza base"
             tagline="Meno di una masterclass online — con zero pratica e zero confronto reale."
