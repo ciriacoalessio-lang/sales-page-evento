@@ -172,7 +172,7 @@ export const Html = () => {
   }, [visibleWords, titleWords.length]);
 
   return (
-    <div className="h-svh relative" style={{ background: '#0a0a0a' }}>
+    <div className="h-svh relative" style={{ background: '#0a0a0a', position: 'sticky', top: 0, zIndex: 0 }}>
       <div
         className="h-svh items-center w-full absolute inset-0 z-60 pointer-events-none px-10 flex justify-center flex-col"
         style={{ textAlign: 'center' }}

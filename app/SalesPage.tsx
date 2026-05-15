@@ -321,7 +321,7 @@ const PulseCtaSection = ({ label, caption }: { label: string; caption?: string }
 
 export const SalesPage = () => {
   return (
-    <div style={{ background: DARK, color: WHITE }}>
+    <div style={{ background: DARK, color: WHITE, position: 'relative', zIndex: 1 }}>
 
       {/* COUNTDOWN */}
       <hr style={s.divider} />
