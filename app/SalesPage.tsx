@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 const BLUE = '#1f22f2';
 const DARK = '#0a0a0a';
 const WHITE = '#ffffff';
+const BG = '#f5f0e8';    // sfondo chiaro ivory
+const TEXT = '#1a1a1a';  // testo scuro
 
 const s = {
   section: {
@@ -29,18 +31,18 @@ const s = {
     fontStyle: 'italic',
     fontSize: 'clamp(1.8rem, 4vw, 3rem)',
     fontWeight: 400,
-    color: WHITE,
+    color: TEXT,
     lineHeight: 1.15,
     marginBottom: 32,
   },
   body: {
     fontFamily: 'Inter, sans-serif',
     fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)',
-    color: 'rgba(255,255,255,0.75)',
+    color: 'rgba(10,10,10,0.65)',
     lineHeight: 1.75,
   },
   divider: {
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: 'rgba(0,0,0,0.1)',
     margin: 0,
   },
 };
@@ -75,11 +77,11 @@ const Countdown = () => {
       <p style={{
         fontFamily: "'Libre Baskerville', Georgia, serif",
         fontSize: 'clamp(2rem, 5vw, 3rem)',
-        color: WHITE,
+        color: TEXT,
         lineHeight: 1,
         marginBottom: 6,
       }}>{n === null ? '—' : String(n).padStart(2, '0')}</p>
-      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>{label}</p>
+      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.4)' }}>{label}</p>
     </div>
   );
 
@@ -110,7 +112,7 @@ const Step = ({ n, title, items }: { n: string; title: string; items: string[] }
       fontStyle: 'italic',
       fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
       fontWeight: 400,
-      color: WHITE,
+      color: TEXT,
       marginBottom: 16,
     }}>{title}</h3>
     <ul style={{ listStyle: 'none', padding: 0, ...s.body }}>
@@ -124,12 +126,12 @@ const Step = ({ n, title, items }: { n: string; title: string; items: string[] }
 );
 
 const Faq = ({ q, a }: { q: string; a: string }) => (
-  <div style={{ marginBottom: 36, borderBottom: '1px solid rgba(255,255,255,0.07)', paddingBottom: 36 }}>
+  <div style={{ marginBottom: 36, borderBottom: '1px solid rgba(0,0,0,0.08)', paddingBottom: 36 }}>
     <p style={{
       fontFamily: "'Libre Baskerville', Georgia, serif",
       fontStyle: 'italic',
       fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-      color: WHITE,
+      color: TEXT,
       marginBottom: 10,
     }}>{q}</p>
     <p style={s.body}>{a}</p>
@@ -169,7 +171,7 @@ const Ticket = ({
       color: WHITE,
       marginBottom: 24,
     }}>{price}</p>
-    <ul style={{ listStyle: 'none', padding: 0, ...s.body, fontSize: '0.9rem', flex: 1 }}>
+    <ul style={{ listStyle: 'none', padding: 0, ...s.body, color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', flex: 1 }}>
       {items.map((item, i) => (
         <li key={i} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 10 }}>
           <Dot /><span>{item}</span>
@@ -321,7 +323,7 @@ const PulseCtaSection = ({ label, caption }: { label: string; caption?: string }
 
 export const SalesPage = () => {
   return (
-    <div style={{ background: DARK, color: WHITE, position: 'relative', zIndex: 1 }}>
+    <div style={{ background: BG, color: TEXT, position: 'relative', zIndex: 1 }}>
 
       {/* COUNTDOWN */}
       <hr style={s.divider} />
@@ -375,12 +377,12 @@ export const SalesPage = () => {
             'La mia presenza per guidarti nel processo',
           ].map((item) => (
             <div key={item} style={{
-              border: '1px solid rgba(255,255,255,0.12)',
+              border: '1px solid rgba(0,0,0,0.15)',
               borderRadius: 40,
               padding: '10px 20px',
               fontFamily: 'Inter, sans-serif',
               fontSize: '0.9rem',
-              color: 'rgba(255,255,255,0.8)',
+              color: 'rgba(10,10,10,0.7)',
             }}>{item}</div>
           ))}
         </div>
@@ -441,7 +443,7 @@ export const SalesPage = () => {
               <p style={{
                 fontFamily: "'Libre Baskerville', Georgia, serif",
                 fontSize: 'clamp(2rem, 5vw, 3rem)',
-                color: WHITE,
+                color: TEXT,
                 marginBottom: 4,
               }}>{n}</p>
               <p style={{ ...s.body, fontSize: '0.85rem' }}>{label}</p>
@@ -463,11 +465,11 @@ export const SalesPage = () => {
       {/* Testimonials */}
       <Testimonials />
 
-{/* ROW 6 — L'offerta */}
-      <hr style={s.divider} />
-      <div id="acquista" style={s.section}>
-        <p style={s.label}>L'offerta</p>
-        <h2 style={s.h2}>Scegli il tuo ticket.</h2>
+{/* ROW 6 — L'offerta (sezione scura per i ticket) */}
+      <div id="acquista" style={{ background: DARK }}>
+      <div style={{ ...s.section, color: WHITE }}>
+        <p style={{ ...s.label }}>L'offerta</p>
+        <h2 style={{ ...s.h2, color: WHITE }}>Scegli il tuo ticket.</h2>
         <div className="ticket-grid" style={{ display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
           <Ticket
             name="Alleanza base"
@@ -503,6 +505,7 @@ export const SalesPage = () => {
           />
         </div>
       </div>
+      </div>
 
       {/* CTA 3 */}
       <PulseCtaSection label="Scegli il tuo ticket →" caption="Scegli il tuo livello di partecipazione" />
@@ -532,7 +535,7 @@ export const SalesPage = () => {
       {/* Footer */}
       <hr style={s.divider} />
       <div style={{ ...s.section, textAlign: 'center', padding: '40px 24px', display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
-        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: 'rgba(255,255,255,0.3)' }}>
+        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', color: 'rgba(10,10,10,0.35)' }}>
           Alessio Ciriaco │ P.IVA 13113240017
         </p>
         <a
@@ -542,14 +545,14 @@ export const SalesPage = () => {
           style={{
             fontFamily: 'Inter, sans-serif',
             fontSize: '0.8rem',
-            color: 'rgba(255,255,255,0.3)',
+            color: 'rgba(10,10,10,0.35)',
             textDecoration: 'none',
-            borderBottom: '1px solid rgba(255,255,255,0.15)',
+            borderBottom: '1px solid rgba(10,10,10,0.2)',
             paddingBottom: 1,
             transition: 'color 0.2s',
           }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.3)')}
+          onMouseEnter={e => (e.currentTarget.style.color = 'rgba(10,10,10,0.8)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'rgba(10,10,10,0.35)')}
         >
           Privacy Policy
         </a>
