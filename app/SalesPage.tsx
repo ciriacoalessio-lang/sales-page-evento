@@ -424,15 +424,34 @@ export const SalesPage = () => {
       <hr style={s.divider} />
       <div style={s.section}>
         <p style={s.label}>Chi sono</p>
-        <h2 style={s.h2}>Mi chiamo Alessio Ciriaco.</h2>
-        <p style={{ ...s.body, marginBottom: 24 }}>
-          Sono Business Strategist e Copywriter. Affianco professionisti che vendono servizi ad acquisire clienti
-          e costruire un ecosistema di offerta che li rappresenta.
-        </p>
-        <p style={{ ...s.body, marginBottom: 40 }}>
-          In poche parole: se fai fatica a vendere il tuo servizio, lavoriamo sul tuo processo di vendita,
-          capiamo dove stai sbagliando e aggiustiamo il tiro.
-        </p>
+        <div style={{ display: 'flex', gap: 'clamp(24px, 5vw, 56px)', alignItems: 'flex-start', flexWrap: 'wrap', marginBottom: 40 }}>
+          {/* Foto */}
+          <img
+            src="/alessio.jpg"
+            alt="Alessio Ciriaco"
+            style={{
+              width: 'clamp(120px, 30vw, 200px)',
+              aspectRatio: '3/4',
+              objectFit: 'cover',
+              objectPosition: 'center top',
+              borderRadius: 16,
+              flexShrink: 0,
+              boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+            }}
+          />
+          {/* Testo */}
+          <div style={{ flex: 1, minWidth: 200 }}>
+            <h2 style={{ ...s.h2, marginBottom: 16 }}>Mi chiamo Alessio Ciriaco.</h2>
+            <p style={{ ...s.body, marginBottom: 16 }}>
+              Sono Business Strategist e Copywriter. Affianco professionisti che vendono servizi ad acquisire clienti
+              e costruire un ecosistema di offerta che li rappresenta.
+            </p>
+            <p style={s.body}>
+              In poche parole: se fai fatica a vendere il tuo servizio, lavoriamo sul tuo processo di vendita,
+              capiamo dove stai sbagliando e aggiustiamo il tiro.
+            </p>
+          </div>
+        </div>
         <div className="stats-grid" style={{ display: 'flex', gap: 48, flexWrap: 'wrap' }}>
           {[
             { n: '4', label: 'eventi di formazione organizzati' },
