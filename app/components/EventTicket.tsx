@@ -122,7 +122,7 @@ export const EventTicket = () => {
               writingMode: 'vertical-rl',
               transform: 'rotate(180deg)',
               letterSpacing: '0.05em',
-            }}>06.06.2026</span>
+            }}>14.06.2026</span>
           </div>
 
           {/* Dashed separator */}

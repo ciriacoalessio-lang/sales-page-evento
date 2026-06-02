@@ -149,7 +149,7 @@ export const Html = () => {
   const titleWords = 'Assembliamo la tua offerta.'.split(' ');
   const subtitle =
     "Un workshop pratico per costruire, strutturare e vendere il tuo servizio attraverso un'offerta creata su misura per il tuo cliente ideale.";
-  const badge = '6 giugno 2026 — Torino, via Bertola 51 — ore 10:00/17:00';
+  const badge = 'Domenica 14 giugno 2026 — Torino, via Bertola 51 — ore 10:00/17:00';
 
   const [visibleWords, setVisibleWords] = useState(0);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
@@ -253,11 +253,12 @@ export const Html = () => {
         <div
           style={{
             fontFamily: 'Inter, sans-serif',
-            fontSize: '12px',
-            color: 'rgba(255,255,255,0.65)',
+            fontSize: 'clamp(14px, 2vw, 18px)',
+            color: 'rgba(255,255,255,0.85)',
             marginTop: '1rem',
-            letterSpacing: '0.05em',
+            letterSpacing: '0.04em',
             textShadow: '0 1px 8px rgba(0,0,0,0.8)',
+            fontWeight: 500,
           }}
         >
           {badge}

@@ -12,7 +12,7 @@ const libreBaskerville = Libre_Baskerville({
 
 export const metadata: Metadata = {
   title: "Assembliamo la tua offerta",
-  description: "Workshop — 6 giugno 2026, Torino",
+  description: "Workshop — 14 giugno 2026, Torino",
 };
 
 export default function RootLayout({
