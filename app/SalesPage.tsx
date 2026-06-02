@@ -347,17 +347,6 @@ export const SalesPage = () => {
             'I bonus: come strutturarli e come non strutturarli.',
           ]}
         />
-        <Step
-          n="2"
-          title="Strategia, test e vendita"
-          items={[
-            'Ricerca di mercato per la tua offerta attraverso i canali social.',
-            'Ricerca di mercato attraverso la creazione di un Jotform.',
-            'Ricerca dei competitor: cosa fanno e cosa puoi fare tu con la tua visione.',
-            'I funnel di acquisizione in organico e a pagamento.',
-            'Come ottimizzare il servizio chiedendo feedback.',
-          ]}
-        />
       </div>
 
       {/* CTA 1 */}
