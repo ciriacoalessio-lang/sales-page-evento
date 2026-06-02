@@ -53,7 +53,7 @@ const Countdown = () => {
   const [time, setTime] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
 
   useEffect(() => {
-    const target = new Date('2026-06-14T10:00:00');
+    const target = new Date('2026-06-06T10:00:00');
     const tick = () => {
       const diff = target.getTime() - Date.now();
       if (diff <= 0) {
@@ -503,7 +503,7 @@ export const SalesPage = () => {
           />
           <Ticket
             name="Alleanza Strategica"
-            tagline="Questo ticket dovrebbe costare almeno il doppio. Il prezzo che vedi è riservato solo a chi sarà in sala il 14 giugno."
+            tagline="Questo ticket dovrebbe costare almeno il doppio. Il prezzo che vedi è riservato solo a chi sarà in sala il 6 giugno."
             href="https://www.alleanzadeicreator.it/eventobasic-6d042ebf"
             price="97€"
             items={[
