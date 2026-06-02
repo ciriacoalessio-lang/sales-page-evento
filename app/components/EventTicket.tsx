@@ -203,7 +203,7 @@ export const EventTicket = () => {
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '0.8rem',
                     color: 'rgba(255,255,255,0.5)',
-                  }}>Torino, via Bertola 51 · 10:00–17:00</p>
+                  }}>Torino, via Bertola 51 · 10:00–13:30</p>
                 </div>
                 {/* Ticket number */}
                 <div style={{

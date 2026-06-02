@@ -149,7 +149,7 @@ export const Html = () => {
   const titleWords = 'Assembliamo la tua offerta.'.split(' ');
   const subtitle =
     "Un workshop pratico per costruire, strutturare e vendere il tuo servizio attraverso un'offerta creata su misura per il tuo cliente ideale.";
-  const badge = 'Sabato 6 giugno 2026 — Torino, via Bertola 51 — ore 10:00/17:00';
+  const badge = 'Sabato 6 giugno 2026 — Torino, via Bertola 51 — ore 10:00/13:30';
 
   const [visibleWords, setVisibleWords] = useState(0);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
