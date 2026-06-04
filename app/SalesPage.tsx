@@ -393,7 +393,7 @@ export const SalesPage = () => {
         <h2 style={s.h2}>Risposte oneste.</h2>
         <Faq
           q="È un programma lungo?"
-          a="Sono 5 ore, di cui la maggior parte pratica. Non passerai tutto il tempo ad ascoltare."
+          a="Sono 3 ore, di cui la maggior parte pratica. Non passerai tutto il tempo ad ascoltare."
         />
         <Faq
           q="Quante persone ci saranno?"
